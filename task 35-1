@@ -1,0 +1,55 @@
+"use strict";
+
+
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%',
+            ruby:'30%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs: function(){
+        for (let key in personalPlanPeter){
+            if (typeof(personalPlanPeter[key]) === 'object'){
+                for (let i in personalPlanPeter[key]){
+                    if (i === 'languages'){
+                        let str = personalPlanPeter [key][i];
+                        str = str.toString();
+                        str = str.split(',').join(' ');
+                    console.log (`Мне ${personalPlanPeter.age} и я владею языками: ${str.toUpperCase()}`);
+                }}
+            }
+        }
+    }
+    };
+
+function showExperience(plan) {
+    console.log(personalPlanPeter.skills.exp); 
+}
+
+function showProgrammingLangs(plan) {
+    let firstProgLang='';
+
+    for (let key in personalPlanPeter){
+        if (typeof(personalPlanPeter[key]) === 'object'){
+            for (let i in personalPlanPeter[key]){
+                if (i === 'programmingLangs'){
+                    for (let j in personalPlanPeter [key][i]){
+                        firstProgLang += `Язык ${j} изучен на ${personalPlanPeter [key][i] [j]} \n`;
+                        
+                    }  
+                }
+            }
+        }
+    }
+    console.log (firstProgLang);  
+}
+
+showExperience();
+showProgrammingLangs ();
+personalPlanPeter.showAgeAndLangs();
